@@ -15,5 +15,5 @@ RUN pip install --no-cache-dir Django mysqlclient
 EXPOSE 8000
 
 CMD ["sh", "-c", "python manage.py migrate --noinput && \
-python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'admin')\" && \
+python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'admin')\" || true && \
 python manage.py runserver 0.0.0.0:8000"]
