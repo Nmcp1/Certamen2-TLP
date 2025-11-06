@@ -75,14 +75,15 @@ WSGI_APPLICATION = 'Certamen2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_db',
-        'USER': 'admin1',
-        'PASSWORD': '123',
-        'HOST': 'mysql', 
-        'PORT': '3306',
+        'NAME': os.getenv('DB_NAME', 'django_db'),
+        'USER': os.getenv('DB_USER', 'admin1'),
+        'PASSWORD': os.getenv('DB_PASSWORD', '123'),
+        'HOST': os.getenv('DB_HOST', 'mysql'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
 
